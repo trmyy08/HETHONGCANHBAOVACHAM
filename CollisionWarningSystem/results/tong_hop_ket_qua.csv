@@ -1,0 +1,41 @@
+﻿MSSV,Kich ban,Ten kich ban,Toc do xe (km/h),Toc do vat the (km/h),Khoang cach dau (m),Tinh trang duong,Trang thai tai xe,Moc toi han (s),Co va cham,T canh bao - Luat (s),T nguy hiem - Luat (s),Du bao truoc - Luat (s),T canh bao - Nguong (s),T nguy hiem - Nguong (s),Du bao truoc - Nguong (s),So mau AN TOAN,So mau CANH BAO,So mau NGUY HIEM,So mau xung dot,So luat khop TB
+051206001878,KB1,Do thi - xe truoc phanh gap,39.5,38.9,30.0,kho,binh_thuong,5.15,Co,3.3,3.7,1.85,3.45,5.0,1.7,66,8,46,56,3.27
+051206001878,KB2,Quoc lo - toc do trung binh,69.1,63.3,55.0,kho,binh_thuong,6.25,Co,2.75,5.6,3.5,6.25,7.3,0.0,55,57,47,105,3.41
+051206001878,KB3,Cao toc - vat can dung yen,98.7,0.0,140.0,kho,binh_thuong,3.05,Co,1.55,1.55,1.5,4.25,4.75,-1.2,31,0,73,73,4.1
+051206001878,KB4,Troi mua - duong uot,59.2,53.5,70.0,uot,binh_thuong,6.6,Co,4.6,6.4,2.0,7.3,8.2,-0.7,92,36,50,87,3.76
+051206001878,KB5,Tai xe mat tap trung,78.9,73.0,100.0,kho,mat_tap_trung,7.95,Co,3.65,6.9,4.3,8.5,9.2,-0.55,73,65,56,124,3.65
+051206001878,KB6,Giu khoang cach an toan (doi chung am),59.2,58.4,60.0,kho,tinh_tao,inf,Khong,,,,,,,200,0,0,2,2.01
+051206001878,KB7,Nguoi di bo bang qua duong,49.3,0.0,85.0,kho,binh_thuong,5.2,Co,1.75,1.75,3.45,4.45,5.5,0.75,35,0,91,91,3.65
+051206001878,KB8,Xe cat ngang tai giao lo,59.2,0.0,85.0,am,binh_thuong,3.55,Co,1.35,2.2,2.2,3.65,4.6,-0.1,27,17,61,78,4.67
+052206009774,KB1,Do thi - xe truoc phanh gap,38.9,38.9,31.6,kho,binh_thuong,5.35,Co,3.35,3.85,2.0,3.7,5.25,1.65,67,10,48,60,3.17
+052206009774,KB2,Quoc lo - toc do trung binh,68.1,63.3,57.9,kho,binh_thuong,6.65,Co,4.1,5.9,2.55,6.55,7.6,0.1,82,36,47,85,3.36
+052206009774,KB3,Cao toc - vat can dung yen,97.3,0.0,147.5,kho,binh_thuong,3.45,Co,1.85,1.85,1.6,4.55,5.1,-1.1,37,0,74,75,3.98
+052206009774,KB4,Troi mua - duong uot,58.4,53.5,73.7,uot,binh_thuong,7.0,Co,5.2,6.7,1.8,7.65,8.55,-0.65,104,30,51,84,3.68
+052206009774,KB5,Tai xe mat tap trung,77.9,73.0,105.3,kho,mat_tap_trung,8.4,Khong,4.75,7.4,3.65,8.9,9.55,-0.5,95,53,52,107,3.53
+052206009774,KB6,Giu khoang cach an toan (doi chung am),58.4,58.4,63.2,kho,tinh_tao,inf,Khong,,,,,,,200,0,0,0,2
+052206009774,KB7,Nguoi di bo bang qua duong,48.7,0.0,89.5,kho,binh_thuong,5.6,Co,2.1,2.1,3.5,4.8,5.9,0.8,42,0,92,91,3.54
+052206009774,KB8,Xe cat ngang tai giao lo,58.4,0.0,89.5,am,binh_thuong,3.9,Co,1.65,2.55,2.25,4.05,4.95,-0.15,33,18,61,80,4.5
+051206004603,KB1,Do thi - xe truoc phanh gap,38.4,35.2,29.2,kho,binh_thuong,4.9,Co,3.05,3.65,1.85,2.95,4.8,1.95,61,12,43,55,3.36
+051206004603,KB2,Quoc lo - toc do trung binh,67.2,57.2,53.5,kho,binh_thuong,5.85,Co,1.85,5.2,4.0,5.7,6.8,0.15,37,67,47,117,3.49
+051206004603,KB3,Cao toc - vat can dung yen,96.0,0.0,136.3,kho,binh_thuong,3.15,Co,1.55,1.55,1.6,4.2,4.75,-1.05,31,0,73,75,4.09
+051206004603,KB4,Troi mua - duong uot,57.6,48.4,68.1,uot,binh_thuong,6.3,Co,4.1,6.1,2.2,6.85,7.9,-0.55,82,40,50,92,3.9
+051206004603,KB5,Tai xe mat tap trung,76.8,66.0,97.3,kho,mat_tap_trung,7.6,Co,3.05,6.45,4.55,8.05,8.8,-0.45,61,68,58,129,3.79
+051206004603,KB6,Giu khoang cach an toan (doi chung am),57.6,52.8,58.4,kho,tinh_tao,inf,Khong,,,,,,,200,0,0,1,2.0
+051206004603,KB7,Nguoi di bo bang qua duong,48.0,0.0,82.7,kho,binh_thuong,5.25,Co,1.75,1.75,3.5,4.35,5.45,0.9,35,0,91,92,3.64
+051206004603,KB8,Xe cat ngang tai giao lo,57.6,0.0,82.7,am,binh_thuong,3.6,Co,1.3,2.2,2.3,3.6,4.6,0.0,26,18,61,79,4.64
+075206003273,KB1,Do thi - xe truoc phanh gap,36.3,38.9,28.8,kho,binh_thuong,5.6,Co,3.45,4.0,2.15,3.75,5.4,1.85,69,11,48,60,3.12
+075206003273,KB2,Quoc lo - toc do trung binh,63.5,63.3,52.8,kho,binh_thuong,7.1,Co,4.95,6.2,2.15,6.85,7.9,0.25,99,25,47,75,3.3
+075206003273,KB3,Cao toc - vat can dung yen,90.7,0.0,134.4,kho,binh_thuong,3.45,Co,1.75,1.75,1.7,4.35,5.0,-0.9,35,0,73,73,4
+075206003273,KB4,Troi mua - duong uot,54.4,53.5,67.2,uot,binh_thuong,7.4,Co,5.8,6.9,1.6,7.8,8.8,-0.4,116,22,52,75,3.58
+075206003273,KB5,Tai xe mat tap trung,72.5,73.0,96.0,kho,mat_tap_trung,8.8,Khong,5.3,7.7,3.5,9.1,9.8,-0.3,106,48,46,94,3.33
+075206003273,KB6,Giu khoang cach an toan (doi chung am),54.4,58.4,57.6,kho,tinh_tao,inf,Khong,,,,,,,200,0,0,2,2.01
+075206003273,KB7,Nguoi di bo bang qua duong,45.3,0.0,81.6,kho,binh_thuong,5.55,Co,2.0,2.0,3.55,4.55,5.75,1.0,40,0,91,92,3.54
+075206003273,KB8,Xe cat ngang tai giao lo,54.4,0.0,81.6,am,binh_thuong,3.95,Co,1.6,2.4,2.35,3.75,4.75,0.2,32,16,61,77,4.49
+070306004031,KB1,Do thi - xe truoc phanh gap,35.2,36.8,28.4,kho,binh_thuong,5.55,Co,3.4,3.95,2.15,3.5,5.3,2.05,68,11,48,60,3.11
+070306004031,KB2,Quoc lo - toc do trung binh,61.6,59.8,52.1,kho,binh_thuong,7.05,Co,4.85,6.05,2.2,6.7,7.75,0.35,97,24,48,73,3.34
+070306004031,KB3,Cao toc - vat can dung yen,88.0,0.0,132.5,kho,binh_thuong,3.6,Co,1.9,1.9,1.7,4.4,5.05,-0.8,38,0,72,72,3.96
+070306004031,KB4,Troi mua - duong uot,52.8,50.6,66.3,uot,binh_thuong,7.4,Co,5.85,6.8,1.55,7.65,8.7,-0.25,117,19,53,72,3.61
+070306004031,KB5,Tai xe mat tap trung,70.4,69.0,94.7,kho,mat_tap_trung,8.75,Khong,5.35,7.65,3.4,8.95,9.7,-0.2,107,46,47,94,3.4
+070306004031,KB6,Giu khoang cach an toan (doi chung am),52.8,55.2,56.8,kho,tinh_tao,inf,Khong,,,,,,,200,0,0,1,2.0
+070306004031,KB7,Nguoi di bo bang qua duong,44.0,0.0,80.5,kho,binh_thuong,5.7,Co,2.15,2.15,3.55,4.55,5.75,1.15,43,0,90,90,3.5
+070306004031,KB8,Xe cat ngang tai giao lo,52.8,0.0,80.5,am,binh_thuong,4.05,Co,1.6,2.55,2.45,3.8,4.85,0.25,32,19,60,79,4.42

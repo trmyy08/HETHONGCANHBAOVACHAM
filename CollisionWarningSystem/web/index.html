@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Collision Warning System | Đề tài 36</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+  <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-grid" viewBox="0 0 24 24">
+      <rect x="4" y="4" width="6" height="6" rx="1.4" />
+      <rect x="14" y="4" width="6" height="6" rx="1.4" />
+      <rect x="4" y="14" width="6" height="6" rx="1.4" />
+      <rect x="14" y="14" width="6" height="6" rx="1.4" />
+    </symbol>
+    <symbol id="i-car" viewBox="0 0 24 24">
+      <path d="M5 11l1.6-4h10.8L19 11l1.5 1.5V18h-2v-1.5H5.5V18h-2v-5.5L5 11Z" />
+      <path d="M7 11h10M6.5 14.5h2m7 0h2" />
+    </symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24">
+      <path d="M12 2l1.3 6.2L20 10l-6.7 1.8L12 18l-1.3-6.2L4 10l6.7-1.8L12 2Z" />
+      <path d="M19 16l.5 2.1L22 19l-2.5.7L19 22l-.5-2.3L16 19l2.5-.8L19 16Z" />
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 24 24">
+      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5v-12Z" />
+      <path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20M8 7h8m-8 3h8" />
+    </symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24">
+      <path d="M20 7v5h-5M4 17v-5h5" />
+      <path d="M5.5 9a7 7 0 0 1 12-2L20 7M4 17l2.5 0a7 7 0 0 0 12-2" />
+    </symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24">
+      <path d="M3 12h4l2.2-6 4.2 12 2.2-6H21" />
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M12 3 20 6v5.2c0 4.8-3.4 8-8 9.8-4.6-1.8-8-5-8-9.8V6l8-3Z" />
+      <path d="m8.5 12 2.2 2.2 4.8-5" />
+    </symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="3" />
+      <path
+        d="M19.4 13.5a7.8 7.8 0 0 0 0-3l1.5-1.2-1.6-2.8-1.8.7a7.8 7.8 0 0 0-2.6-1.5L14.6 4h-3.2l-.3 1.8A7.8 7.8 0 0 0 8.5 7.3l-1.8-.7-1.6 2.8L4.6 10.6a7.8 7.8 0 0 0 0 3L3.1 14.8l1.6 2.8 1.8-.7a7.8 7.8 0 0 0 2.6 1.5l.3 1.8h3.2l.3-1.8a7.8 7.8 0 0 0 2.6-1.5l1.8.7 1.6-2.8-1.5-1.3Z" />
+    </symbol>
+  </svg>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">13</div>
+      <div><b>Group 13</b><small>COLLISION WARNING SYSTEM</small><span class="team-chip">GROUP 13</span></div>
+    </div>
+    <div class="nav-label">WORKSPACE</div>
+    <nav>
+      <a class="active" href="#overview" data-page="overview"><svg class="nav-icon">
+          <use href="#i-grid"></use>
+        </svg><span>Tổng quan</span></a>
+      <a href="#simulation" data-page="simulation"><svg class="nav-icon">
+          <use href="#i-car"></use>
+        </svg><span>Mô phỏng</span></a>
+      <a href="#inference" data-page="inference"><svg class="nav-icon">
+          <use href="#i-spark"></use>
+        </svg><span>Suy diễn luật</span></a>
+      <a href="#rules" data-page="rules"><svg class="nav-icon">
+          <use href="#i-book"></use>
+        </svg><span>Cơ sở luật</span></a>
+    </nav>
+    <div class="side-note">
+      <svg class="note-icon">
+        <use href="#i-pulse"></use>
+      </svg> Python Inference Engine
+      <b id="sideStatus">Đang kết nối…</b>
+      <small>Hệ luật IF-THEN · Phiên bản 2.0</small>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <div class="eyebrow">HỆ THỐNG GIAO THÔNG THÔNG MINH</div>
+        <h1>Hệ thống cảnh báo va chạm</h1>
+        <p>Theo dõi mô phỏng cảm biến và phân tích kết quả bằng hệ luật.</p>
+      </div>
+      <div class="header-right">
+        <span class="live"><i></i> SYSTEM ONLINE</span>
+        <span class="date" id="clock"></span>
+      </div>
+    </header>
+
+
+    <section id="overview" class="page-view">
+      <div class="section-title">
+        <button class="btn secondary" onclick="loadMeta()"><svg class="button-icon">
+            <use href="#i-refresh"></use>
+          </svg> Làm mới</button>
+      </div>
+      <div class="cards">
+        <article class="stat">
+          <div class="stat-top"><span>Trạng thái Backend</span><b class="iconbox blue"><svg>
+                <use href="#i-pulse"></use>
+              </svg></b></div><strong id="backend">--</strong><small>FastAPI kết nối Python</small>
+        </article>
+        <article class="stat">
+          <div class="stat-top"><span>Luật IF-THEN</span><b class="iconbox purple"><svg>
+                <use href="#i-book"></use>
+              </svg></b></div><strong id="ruleCount">--</strong><small>Cơ sở tri thức đang nạp</small>
+        </article>
+        <article class="stat">
+          <div class="stat-top"><span>Kịch bản mô phỏng</span><b class="iconbox orange"><svg>
+                <use href="#i-car"></use>
+              </svg></b></div><strong id="scenarioCount">--</strong><small>Kịch bản đã tích hợp</small>
+        </article>
+        <article class="stat">
+          <div class="stat-top"><span>MSSV cấu hình</span><b class="iconbox green"><svg>
+                <use href="#i-grid"></use>
+              </svg></b></div><strong id="studentCount">--</strong><small>Seed tạo dữ liệu cảm biến</small>
+        </article>
+      </div>
+    </section>
+
+
+    <section id="simulation" class="panel page-view">
+      <div class="section-title">
+        <div>
+          <h2>Mô phỏng tình huống giao thông</h2>
+          <p>Chạy bộ sinh cảm biến và động cơ suy diễn gốc của Python.</p>
+        </div>
+        <span class="tag">ĐỘ PHÂN GIẢI MÔ PHỎNG ĐẦY ĐỦ</span>
+      </div>
+      <div class="controls">
+        <label>Kịch bản<select id="scenario"></select></label>
+        <label>Mã sinh viên (seed)<select id="mssv"></select></label>
+        <button class="btn primary" id="runSim" onclick="runSimulation()">▶ Chạy mô phỏng</button>
+      </div>
+      <div id="scenarioDesc" class="description">Chọn kịch bản để xem mô tả.</div>
+      <div id="simMessage" class="message">Chưa chạy mô phỏng. Hãy chọn kịch bản rồi nhấn “Chạy mô phỏng”.</div>
+      <div class="metrics" id="simMetrics" hidden>
+        <div><small>Số mẫu cảm biến</small><b id="mSamples">--</b></div>
+        <div><small>Thời điểm cảnh báo đầu tiên</small><b id="mWarning">--</b></div>
+        <div><small>Thời gian cảnh báo sớm</small><b id="mEarly">--</b></div>
+        <div><small>Số mẫu xung đột luật</small><b id="mConflict">--</b></div>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-head">
+          <div><b>Diễn biến khoảng cách và mức cảnh báo</b><small>Điểm hiển thị được lấy mẫu từ chuỗi mô phỏng đầy
+              đủ</small></div>
+          <div class="legend">
+            <span><i class="line-blue"></i> Khoảng cách</span>
+            <span><i class="dot-yellow"></i> Cảnh báo</span>
+            <span><i class="dot-red"></i> Nguy hiểm</span>
+            <span><i class="deadline-mark"></i> Mốc tới hạn</span>
+          </div>
+        </div>
+        <canvas id="simChart" height="110"></canvas>
+      </div>
+    </section>
+
+
+    <section id="inference" class="panel page-view">
+      <div class="section-title">
+        <div>
+          <h2>Thử nghiệm suy diễn luật</h2>
+          <p>Nhập thông số để gọi trực tiếp hàm suy_dien() hiện tại.</p>
+        </div>
+        <span class="tag purple-tag">HỆ LUẬT IF-THEN</span>
+      </div>
+      <div class="infer-grid">
+        <div class="form-grid">
+          <label>Khoảng cách (m)<input id="distance" type="number" min="0" value="25" step="0.1"></label>
+          <label>Tốc độ xe chủ (km/h)<input id="ego" type="number" min="0" value="60"></label>
+          <label>Tốc độ vật thể (km/h)<input id="objectSpeed" type="number" min="0" value="40"></label>
+          <label>Gia tốc tiếp cận tương đối (m/s²)<input id="relativeAcceleration" type="number" min="-20" max="20"
+              value="0" step="0.1"></label>
+          <label>Mặt đường<select id="road">
+              <option value="kho">Khô</option>
+              <option value="am">Ẩm</option>
+              <option value="uot">Ướt</option>
+              <option value="tron">Trơn trượt</option>
+            </select></label>
+          <label>Trạng thái tài xế<select id="driver">
+              <option value="tinh_tao">Tỉnh táo</option>
+              <option value="binh_thuong" selected>Bình thường</option>
+              <option value="met_moi">Mệt mỏi</option>
+              <option value="mat_tap_trung">Mất tập trung</option>
+            </select></label>
+          <label>Loại vật thể<select id="objectType">
+              <option value="xe_phia_truoc">Xe phía trước</option>
+              <option value="vat_can_tinh">Vật cản tĩnh</option>
+              <option value="nguoi_di_bo">Người đi bộ</option>
+              <option value="xe_cat_ngang">Xe cắt ngang</option>
+            </select></label>
+          <button class="btn primary wide" onclick="runInference()">Phân tích suy diễn</button>
+        </div>
+        <div id="inferResult" class="result-placeholder">
+          <div class="big-spark">✳</div><b>Chưa có kết quả suy diễn</b>
+          <p>Nhập thông số bên trái và chạy phân tích.</p>
+        </div>
+      </div>
+      <div id="explain" class="explain" hidden></div>
+    </section>
+
+
+    <section id="rules" class="panel page-view">
+      <div class="section-title">
+        <div>
+          <h2>Cơ sở tri thức</h2>
+          <p>Danh sách luật lấy trực tiếp từ knowledge_base.py.</p>
+        </div>
+        <span class="tag">CƠ SỞ LUẬT</span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Mã luật</th>
+              <th>Nhóm</th>
+              <th>Độ ưu tiên</th>
+              <th>Độ tin cậy</th>
+              <th>Kết luận</th>
+            </tr>
+          </thead>
+          <tbody id="ruleRows">
+            <tr>
+              <td colspan="5">Đang tải luật…</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <footer>ĐỀ TÀI 36 · MÔ PHỎNG HỆ THỐNG CẢNH BÁO VA CHẠM <span>Python Inference Engine phiên bản 2.0 · Web
+        Dashboard</span></footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+
+</html>

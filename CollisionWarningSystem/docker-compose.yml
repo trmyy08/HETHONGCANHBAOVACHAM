@@ -1,0 +1,9 @@
+services:
+  collision-warning:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: collision-warning-system
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
