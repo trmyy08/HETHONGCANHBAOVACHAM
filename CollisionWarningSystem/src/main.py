@@ -1,14 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-main.py
-Chuong trinh chinh - De tai 36: Mo phong he thong canh bao va cham.
-
-Cach chay:
-    python main.py              -> chay toan bo thi nghiem + ve bieu do
-    python main.py --demo       -> in chuoi suy dien chi tiet cua 1 kich ban
-    python main.py --no-plot    -> chi chay so lieu, khong ve bieu do
-"""
-
 import sys
 import statistics
 

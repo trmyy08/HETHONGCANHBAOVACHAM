@@ -1,16 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-visualize.py
-Sinh cac bieu do truc quan phuc vu bao cao.
-
-Cac hinh duoc xuat ra thu muc results/:
-    H1_dien_bien_kich_ban.png   - dien bien khoang cach + muc canh bao, 6 kich ban
-    H2_ttc_theo_thoi_gian.png   - TTC va nguong canh bao
-    H3_so_sanh_du_bao.png       - so sanh thoi gian du bao truoc giua 2 mo hinh
-    H4_ban_do_quyet_dinh.png    - ban do quyet dinh tren mat phang (toc do, khoang cach)
-    H5_phan_bo_theo_mssv.png    - phan bo muc canh bao theo tung MSSV
-"""
-
 import os
 import matplotlib
 matplotlib.use("Agg")
@@ -46,10 +33,6 @@ plt.rcParams.update({
 def _to_mau(chuoi_muc):
     return [MAU[m] for m in chuoi_muc]
 
-
-# ---------------------------------------------------------------------------
-# HINH 1: DIEN BIEN 6 KICH BAN
-# ---------------------------------------------------------------------------
 def hinh_dien_bien(ket_qua_mot_mssv, mssv):
     fig, axes = plt.subplots(2, 4, figsize=(17, 7))
     for ax, r in zip(axes.ravel(), ket_qua_mot_mssv):
@@ -86,11 +69,6 @@ def hinh_dien_bien(ket_qua_mot_mssv, mssv):
     fig.savefig(duong_dan, bbox_inches="tight")
     plt.close(fig)
     return duong_dan
-
-
-# ---------------------------------------------------------------------------
-# HINH 2: TTC THEO THOI GIAN
-# ---------------------------------------------------------------------------
 def hinh_ttc(ket_qua_mot_mssv, mssv):
     fig, ax = plt.subplots(figsize=(10, 5))
     mau_duong = plt.cm.viridis(np.linspace(0, 0.9, len(ket_qua_mot_mssv)))
@@ -120,10 +98,6 @@ def hinh_ttc(ket_qua_mot_mssv, mssv):
     plt.close(fig)
     return duong_dan
 
-
-# ---------------------------------------------------------------------------
-# HINH 3: SO SANH THOI GIAN DU BAO TRUOC
-# ---------------------------------------------------------------------------
 def hinh_so_sanh(tat_ca):
     ma_kb = [kb.ma for kb in DANH_SACH_KICH_BAN if kb.ma != "KB6"]
     luat, nguong = [], []
@@ -156,10 +130,6 @@ def hinh_so_sanh(tat_ca):
     plt.close(fig)
     return duong_dan, dict(zip(ma_kb, zip(luat, nguong)))
 
-
-# ---------------------------------------------------------------------------
-# HINH 4: BAN DO QUYET DINH TREN MAT PHANG (TOC DO, KHOANG CACH)
-# ---------------------------------------------------------------------------
 def hinh_ban_do_quyet_dinh():
     toc_do = np.linspace(5, 120, 120)
     khoang_cach = np.linspace(1, 120, 120)
@@ -210,10 +180,6 @@ def hinh_ban_do_quyet_dinh():
     plt.close(fig)
     return duong_dan
 
-
-# ---------------------------------------------------------------------------
-# HINH 5: PHAN BO MUC CANH BAO THEO MSSV
-# ---------------------------------------------------------------------------
 def hinh_phan_bo_mssv(tat_ca):
     nhan = [m[-4:] for m in MSSV_LIST]
     an_toan, canh_bao, nguy_hiem = [], [], []

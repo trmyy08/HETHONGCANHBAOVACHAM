@@ -1,18 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-knowledge_base.py
-Co so tri thuc dang luat IF-THEN cho he thong canh bao va cham.
-
-Moi luat gom:
-    - id        : ma luat
-    - nhom      : nhom chuc nang cua luat
-    - dieu_kien : ham nhan tap su kien (facts) -> True/False
-    - ket_luan  : muc canh bao suy ra duoc
-    - uu_tien   : do uu tien, dung de giai quyet xung dot (cao hon = manh hon)
-    - do_tin_cay: do tin cay cua luat (0..1)
-    - giai_thich: cau van giai thich, dung cho explanation trace
-"""
-
 from dataclasses import dataclass
 from typing import Callable, Dict, Any, List
 
@@ -46,15 +31,8 @@ class Rule:
         except (KeyError, IndexError, ValueError):
             return self.giai_thich
 
-
-# ---------------------------------------------------------------------------
-# CO SO LUAT: 22 luat, chia 6 nhom chuc nang
-# ---------------------------------------------------------------------------
 RULE_BASE: List[Rule] = [
 
-    # -----------------------------------------------------------------------
-    # NHOM 1: LUAT LOC TINH HUONG (uu tien cao nhat - chan canh bao gia)
-    # -----------------------------------------------------------------------
     Rule(
         id="R01", nhom="Loc tinh huong",
         dieu_kien=lambda f: not f["cam_bien_hoat_dong"],
@@ -78,9 +56,6 @@ RULE_BASE: List[Rule] = [
                    "xe gan nhu dung yen nen bo qua canh bao.",
     ),
 
-    # -----------------------------------------------------------------------
-    # NHOM 2: LUAT KHOANG CACH TUYET DOI (an toan vat ly)
-    # -----------------------------------------------------------------------
     Rule(
         id="R04", nhom="Khoang cach tuyet doi",
         dieu_kien=lambda f: f["khoang_cach"] < ABSOLUTE_MIN_DISTANCE,
@@ -89,9 +64,6 @@ RULE_BASE: List[Rule] = [
                    "{nguong_toi_thieu:.1f} m. Nguy hiem bat ke toc do.",
     ),
 
-    # -----------------------------------------------------------------------
-    # NHOM 3: LUAT KET HOP TOC DO - KHOANG CACH (lam nen cho muc NGUY HIEM)
-    # -----------------------------------------------------------------------
     Rule(
         id="R05", nhom="Ket hop toc do - khoang cach",
         dieu_kien=lambda f: f["dang_tiep_can"] and f["ttc"] <= TTC_DANGER,
@@ -131,9 +103,6 @@ RULE_BASE: List[Rule] = [
                    "{khoang_cach_an_toan:.1f} m nhung chua duoi nguong nguy hiem.",
     ),
 
-    # -----------------------------------------------------------------------
-    # NHOM 4: LUAT DIEU CHINH THEO DIEU KIEN MOI TRUONG
-    # -----------------------------------------------------------------------
     Rule(
         id="R10", nhom="Dieu kien moi truong",
         dieu_kien=lambda f: f["dang_tiep_can"]
@@ -170,9 +139,6 @@ RULE_BASE: List[Rule] = [
                    "{ttc:.2f}s: khong con du thoi gian phan ung thu cong.",
     ),
 
-    # -----------------------------------------------------------------------
-    # NHOM 5: LUAT THEO LOAI VAT THE VA XU HUONG
-    # -----------------------------------------------------------------------
     Rule(
         id="R14", nhom="Loai vat the",
         dieu_kien=lambda f: f["loai_vat_the"] == "vat_can_tinh"
@@ -223,9 +189,6 @@ RULE_BASE: List[Rule] = [
         giai_thich="Xe phia truoc dang chay nhanh hon hoac bang xe chu, khoang cach khong thu hep.",
     ),
 
-    # -----------------------------------------------------------------------
-    # NHOM 6: LUAT MAC DINH (uu tien thap nhat)
-    # -----------------------------------------------------------------------
     Rule(
         id="R20", nhom="Mac dinh",
         dieu_kien=lambda f: f["dang_tiep_can"] and f["ttc"] > TTC_WARNING

@@ -1,0 +1,60 @@
+======================================================================================
+DE TAI 36 - MO PHONG HE THONG CANH BAO VA CHAM
+Ky thuat AI trong tam: He luat IF-THEN, doi sanh luat + tong hop bang chung + nguong canh bao
+======================================================================================
+Co so tri thuc : 22 luat IF-THEN, chia 6 nhom chuc nang
+MSSV su dung   : 051206001878, 052206009774, 051206004603, 075206003273, 070306004031
+So kich ban    : 8 (yeu cau toi thieu 3)
+Muc canh bao   : AN TOAN / CANH BAO / NGUY HIEM
+====================================================================================== 
+
+DEMO GIAI TRINH SUY DIEN - KB1: Do thi - xe truoc phanh gap
+MSSV 051206001878 | Di trong noi do 40 km/h, bam sau xe truoc 30 m o cung toc do. Den giay thu 2 xe truoc phanh gap vi den do. Day la tinh huong va cham lien hoan pho bien nhat trong do thi.
+
+--------------------------------------------------------------------------------------
+CHUYEN MUC: khoi dau -> AN TOAN
+  t = 0.00s | d = 30.7 m | v = 39.5 km/h | TTC = 197.40s | d/d_an_toan = 1.38
+  => KET LUAN: AN TOAN (luat R20, do tin cay 0.95)
+  Tong hop bang chung M01-M03 (phuc vu giai thich):
+     [FC] R20: dieu kien dung -> them kich_hoat_R20
+     [FC] R21: dieu kien dung -> them kich_hoat_R21
+     [FC] M03: suy ra co_bang_chung_an_toan
+  So luat khop: 2
+   >> [R20|ut=20|AN TOAN] TTC = 197.40s va khoang cach dat 138% muc an toan, ca hai tieu chi deu vuot nguong an toan.
+      [R21|ut=1|AN TOAN] Khong luat canh bao nao duoc kich hoat, mac dinh ket luan an toan.
+  Hanh dong: Giu nguyen hanh trinh. Khong co canh bao.
+--------------------------------------------------------------------------------------
+CHUYEN MUC: AN TOAN -> CANH BAO
+  t = 3.30s | d = 25.4 m | v = 39.8 km/h | TTC = 4.21s | d/d_an_toan = 1.13
+  => KET LUAN: CANH BAO (luat R18, do tin cay 0.80)
+  Tong hop bang chung M01-M03 (phuc vu giai thich):
+     [FC] R18: dieu kien dung -> them kich_hoat_R18
+     [FC] R20: dieu kien dung -> them kich_hoat_R20
+     [FC] R21: dieu kien dung -> them kich_hoat_R21
+     [FC] M02: suy ra co_bang_chung_canh_bao
+     [FC] M03: suy ra co_bang_chung_an_toan
+  So luat khop: 3  [CO XUNG DOT - da giai quyet bang do uu tien]
+   >> [R18|ut=54|CANH BAO] Khoang cach dang thu hep dan (4.38 m/s^2), can theo doi.
+      [R20|ut=20|AN TOAN] TTC = 4.21s va khoang cach dat 113% muc an toan, ca hai tieu chi deu vuot nguong an toan.
+      [R21|ut=1|AN TOAN] Khong luat canh bao nao duoc kich hoat, mac dinh ket luan an toan.
+  Hanh dong: Canh bao am thanh ngat quang + den vang. Tai xe nen nha chan ga.
+--------------------------------------------------------------------------------------
+CHUYEN MUC: CANH BAO -> NGUY HIEM
+  t = 3.70s | d = 23.3 m | v = 39.7 km/h | TTC = 2.99s | d/d_an_toan = 1.04
+  => KET LUAN: NGUY HIEM (luat R17, do tin cay 0.87)
+  Tong hop bang chung M01-M03 (phuc vu giai thich):
+     [FC] R17: dieu kien dung -> them kich_hoat_R17
+     [FC] R08: dieu kien dung -> them kich_hoat_R08
+     [FC] R18: dieu kien dung -> them kich_hoat_R18
+     [FC] R21: dieu kien dung -> them kich_hoat_R21
+     [FC] M01: suy ra co_bang_chung_nguy_hiem
+     [FC] M02: suy ra co_bang_chung_canh_bao
+     [FC] M03: suy ra co_bang_chung_an_toan
+  So luat khop: 4  [CO XUNG DOT - da giai quyet bang do uu tien]
+   >> [R17|ut=68|NGUY HIEM] Toc do tiep can dang tang nhanh (4.38 m/s^2) - xe truoc phanh gap. TTC 2.99s se rut ngan rat nhanh.
+      [R08|ut=60|CANH BAO] TTC = 2.99s nam trong khoang canh bao (1.5s - 3.0s).
+      [R18|ut=54|CANH BAO] Khoang cach dang thu hep dan (4.38 m/s^2), can theo doi.
+      [R21|ut=1|AN TOAN] Khong luat canh bao nao duoc kich hoat, mac dinh ket luan an toan.
+  Hanh dong: Canh bao am thanh lien tuc + den do + rung vo lang. Kich hoat ho tro phanh khan cap (AEB).
+-------------------------------------------------------------------------------------- 
+

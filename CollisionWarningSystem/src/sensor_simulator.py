@@ -1,20 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-sensor_simulator.py
-Sinh du lieu cam bien khoang cach / toc do mo phong theo MSSV.
-
-Yeu cau de tai: "Tu mo phong du lieu cam bien khoang cach/toc do theo MSSV
-- khong can dataset ngoai."
-
-Cach gan MSSV vao du lieu:
-    - MSSV duoc dung lam seed cua bo sinh so ngau nhien  -> moi sinh vien co
-      chuoi nhieu cam bien rieng, tai lap duoc 100%.
-    - Cac chu so cua MSSV duoc dung de lech nhe cac tham so dau vao
-      (khoang cach ban dau, toc do ban dau, do tre cam bien) trong pham vi
-      +-12%, nen moi sinh vien co mot bo du lieu khac nhau nhung van cung
-      mot kich ban vat ly.
-"""
-
 import math
 import random
 from dataclasses import dataclass, field
@@ -24,29 +7,22 @@ from config import (
     SENSOR_RATE_HZ, DISTANCE_NOISE_STD, SPEED_NOISE_STD,
     DROPOUT_PROB, MAX_SENSOR_RANGE,
 )
-
-
-# ---------------------------------------------------------------------------
-# DINH NGHIA KICH BAN
-# ---------------------------------------------------------------------------
 @dataclass
 class KichBan:
     ma: str
     ten: str
     mo_ta: str
-    toc_do_xe_kmh: float          # toc do xe chu luc bat dau
-    toc_do_vat_the_kmh: float     # toc do vat the phia truoc luc bat dau
-    khoang_cach_dau: float        # khoang cach ban dau (m)
-    gia_toc_vat_the: float        # gia toc vat the phia truoc (m/s^2), am = phanh
-    thoi_diem_phanh: float = 0.0  # giay thu bao nhieu thi vat the bat dau phanh
-    gia_toc_xe: float = 0.0       # gia toc xe chu (m/s^2)
+    toc_do_xe_kmh: float         
+    toc_do_vat_the_kmh: float     
+    khoang_cach_dau: float        
+    gia_toc_vat_the: float        
+    thoi_diem_phanh: float = 0.0  
+    gia_toc_xe: float = 0.0     
     tinh_trang_duong: str = "kho"
     trang_thai_tai_xe: str = "binh_thuong"
     loai_vat_the: str = "xe_phia_truoc"
-    thoi_luong: float = 10.0      # thoi gian mo phong (giay)
+    thoi_luong: float = 10.0      
 
-
-# 6 kich ban (yeu cau toi thieu 3) phu kin dai toc do tu do thi den cao toc
 DANH_SACH_KICH_BAN: List[KichBan] = [
     KichBan(
         ma="KB1", ten="Do thi - xe truoc phanh gap",
@@ -156,11 +132,6 @@ def ca_bien_kich_ban(kb: KichBan, mssv: str) -> KichBan:
         loai_vat_the=kb.loai_vat_the,
         thoi_luong=kb.thoi_luong,
     )
-
-
-# ---------------------------------------------------------------------------
-# SINH CHUOI DU LIEU CAM BIEN
-# ---------------------------------------------------------------------------
 def sinh_du_lieu(kb: KichBan, mssv: str, co_nhieu: bool = True) -> List[Dict[str, Any]]:
     """
     Mo phong dong hoc 2 xe va xuat chuoi mau cam bien o tan so SENSOR_RATE_HZ.

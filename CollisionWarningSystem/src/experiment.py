@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-experiment.py
-Chay mo phong, do cac chi so danh gia va so sanh giua hai mo hinh:
-    (A) He suy dien theo luat, ket hop TOC DO + KHOANG CACH  (de xuat cua nhom)
-    (B) Nguong khoang cach co dinh, KHONG xet toc do          (doi chung)
-"""
-
 import csv
 import os
 import statistics
@@ -21,10 +13,6 @@ from inference_engine import suy_dien, suy_dien_nguong_co_dinh, loc_on_dinh
 THU_MUC_KET_QUA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results")
 THU_MUC_DU_LIEU = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
 
-
-# ---------------------------------------------------------------------------
-# MOC THOI GIAN TOI HAN (ground truth de danh gia canh bao som hay muon)
-# ---------------------------------------------------------------------------
 def tim_moc_toi_han(du_lieu: List[Dict[str, Any]], tinh_trang_duong: str) -> float:
     """Tim moc mat kha nang tranh va cham neu xe chu phanh toi da ngay lap tuc.
 
@@ -33,7 +21,6 @@ def tim_moc_toi_han(du_lieu: List[Dict[str, Any]], tinh_trang_duong: str) -> flo
     quang duong dung. Day la mo hinh 1D ly tuong hoa, khong thay the thu nghiem xe.
     """
     a_ego = max(0.1, ROAD_FRICTION[tinh_trang_duong] * G * BRAKE_EFFICIENCY)
-    # Gia dinh vat the cung co kha nang giam toc voi he so bam mat duong nhu xe chu.
     a_lead = a_ego
     for mau in du_lieu:
         v_ego = max(0.0, mau["toc_do_xe_kmh"] / 3.6)
@@ -45,19 +32,13 @@ def tim_moc_toi_han(du_lieu: List[Dict[str, Any]], tinh_trang_duong: str) -> flo
             return mau["t"]
     return float("inf")
 
-
-# ---------------------------------------------------------------------------
-# CHAY 1 KICH BAN VOI 1 MSSV
-# ---------------------------------------------------------------------------
 def chay_mot_kich_ban(kb_goc, mssv: str) -> Dict[str, Any]:
     kb = ca_bien_kich_ban(kb_goc, mssv)
     du_lieu = sinh_du_lieu(kb, mssv, co_nhieu=True)
 
     ket_qua_suy_dien = [suy_dien(m) for m in du_lieu]
-    # Chuoi ket luan tho, truoc khi loc nhieu
     muc_luat_tho = [k["muc_canh_bao"] for k in ket_qua_suy_dien]
     muc_nguong_tho = [suy_dien_nguong_co_dinh(m) for m in du_lieu]
-    # Ap dung bo loc on dinh cho CA HAI mo hinh de so sanh cong bang
     ket_qua_nguong = loc_on_dinh(muc_nguong_tho)
 
     t_toi_han = tim_moc_toi_han(du_lieu, kb.tinh_trang_duong)
@@ -121,11 +102,7 @@ def chay_mot_kich_ban(kb_goc, mssv: str) -> Dict[str, Any]:
         "cac_luat_da_dung": cac_luat_da_dung,
         "cac_luat_tung_khop": cac_luat_tung_khop,
     }
-
-
-# ---------------------------------------------------------------------------
-# CHAY TOAN BO THI NGHIEM
-# ---------------------------------------------------------------------------
+    
 def chay_toan_bo() -> List[Dict[str, Any]]:
     tat_ca = []
     for mssv in MSSV_LIST:
@@ -133,10 +110,6 @@ def chay_toan_bo() -> List[Dict[str, Any]]:
             tat_ca.append(chay_mot_kich_ban(kb, mssv))
     return tat_ca
 
-
-# ---------------------------------------------------------------------------
-# XUAT FILE
-# ---------------------------------------------------------------------------
 def xuat_csv_tong_hop(tat_ca: List[Dict[str, Any]]) -> str:
     os.makedirs(THU_MUC_KET_QUA, exist_ok=True)
     duong_dan = os.path.join(THU_MUC_KET_QUA, "tong_hop_ket_qua.csv")
