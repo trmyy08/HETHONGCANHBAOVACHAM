@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """FastAPI adapter for the original De tai 36 v2.0 AI simulation core."""
 from pathlib import Path
 import math
